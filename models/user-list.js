@@ -1,6 +1,7 @@
 const User = require("./user")
 
 class UserList{
+    fin = false;
     constructor() {
         this.users = [];
     }
@@ -8,6 +9,22 @@ class UserList{
         const user = new User(name);
         this.users.push(user);
         return this.users;
+    }
+    increaseScore(name){
+        this.users = this.users.map( user => {
+            if (user.name === name){
+                user.score += 10;
+            }
+            return user;
+        });
+    }
+    increaseQuestion(name){
+        this.users = this.users.map(user => {
+            if(user.name === name){
+                user.question += 1;
+            }
+            return user;
+        })
     }
 
     removeUser(name){
